@@ -8,18 +8,18 @@ namespace MohawkGame2D
     public class Game
     {
         // Place your variables here:
-        Color turquoise = new Color ("#6d8d8a");
-         
+        Color teal = new Color ("#46929e");
+        Player Fish = new Player(new Vector2(120, 250), new Vector2 (60, 20), 100);
         public void Setup()
         {
             Window.SetSize(800, 600);
-            Window.SetTitle("Fish Game");
-            Window.ClearBackground(turquoise);
+            Window.SetTitle("Fish Game");            
         }
 
         public void Update()
         {
-            
+            Window.ClearBackground(teal);
+            Fish.update();
         }
     }
 
