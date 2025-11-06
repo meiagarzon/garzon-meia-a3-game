@@ -21,12 +21,19 @@ public class Bait
     public void Update()
     {
         DrawBait();
+        DrawLine();
     }
     public void DrawBait()
     {
-        Draw.FillColor = Color.Clear;
+        Draw.FillColor = Color.Black;
         Draw.LineSize = 1;
         Draw.Rectangle(pos, size);
+    }
+    public void DrawLine()
+    {
+        Draw.LineSize = 1;
+        Draw.LineColor = Color.White;
+        Draw.Line(300, 200, 300, 0);
     }
 }
 

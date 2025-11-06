@@ -24,7 +24,7 @@ public class Player
         this.jumpHeight = jumpHeight;
     }
 
-    public void update()
+    public void Update()
     {
         DrawFish();
         PlayerGravity();
