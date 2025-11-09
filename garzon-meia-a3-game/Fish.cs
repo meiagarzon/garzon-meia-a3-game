@@ -13,13 +13,13 @@ public class Player
     //place variables here
     Vector2 pos;
     Vector2 size;
-    float velocity = 0;
+    float velocity;
     float gravity = 200;
     float jumpHeight;
 
-    public Player(Vector2 pos, Vector2 size, float jumpHeight)
+    public Player(Vector2 position, Vector2 size, float jumpHeight)
     {
-        this.pos = pos;
+        this.pos = position;
         this.size = size;
         this.jumpHeight = jumpHeight;
     }
@@ -29,6 +29,7 @@ public class Player
         DrawFish();
         PlayerGravity();
         PlayerMovement();
+        GameOver();
     }
     
     public void PlayerMovement()
@@ -38,12 +39,21 @@ public class Player
             velocity -= jumpHeight;
         }
     }
+
     public void DrawFish()
     {
-        Draw.LineSize = 0;
-        Draw.LineColor = Color.Clear;
+        //draw body
+        Draw.FillColor = Color.Yellow;
         Draw.Ellipse(pos.X, pos.Y, size.X, size.Y);
-    }    
+
+        //draw tail
+        Draw.FillColor = Color.Yellow;
+        Draw.Triangle(pos.X - 33, pos.Y + 12, pos.X - 15, pos.Y, pos.X - 33, pos.Y - 12);
+
+        //draw eye
+        Draw.FillColor = Color.Black;
+        Draw.Circle(pos.X + 20, pos.Y, 3);
+    }
 
     public void PlayerGravity()
     {
@@ -53,4 +63,22 @@ public class Player
         pos.Y += velocity * Time.DeltaTime;
     }
 
+    public void GameOver()
+    {
+        if (pos.Y + 20 >= Window.Height)
+        {
+            Window.ClearBackground(Color.Black);
+            Text.Size = 35;
+            Text.Color = Color.Red;
+            string gameOver = "Your fish is dead. GAME OVER!";
+            Text.Draw(gameOver, 130, 280);
+
+            //restart
+            Text.Size = 25;
+            Text.Color = Color.Red;
+            string restart = "Press [SPACE] to restart.";
+            Text.Draw(restart, 230, 500);
+        }            
+        
+    }
 }

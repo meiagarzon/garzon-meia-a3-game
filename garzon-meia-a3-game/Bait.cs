@@ -21,16 +21,15 @@ public class Bait
     public void Update()
     {
         DrawBait();
-        DrawLine();
     }
     public void DrawBait()
     {
+        //hitbox
         Draw.FillColor = Color.Black;
         Draw.LineSize = 1;
-        Draw.Rectangle(pos, size);
-    }
-    public void DrawLine()
-    {
+        Draw.Rectangle(pos, size);        
+        
+        //draw line
         Draw.LineSize = 1;
         Draw.LineColor = Color.White;
         Draw.Line(300, 200, 300, 0);

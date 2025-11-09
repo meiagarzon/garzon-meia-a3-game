@@ -17,19 +17,20 @@ namespace MohawkGame2D
         public void Setup()
         {
             Window.SetSize(800, 600);
-            Window.SetTitle("Fish Game");             
-           
+            Window.SetTitle("Fish Game");                        
         }
 
         public void Update()
         {            
-            Window.ClearBackground(teal);
-            Fish.Update();
+            Window.ClearBackground(teal);            
             for (int bait = 0; bait < worms.Length; bait++)
             {
                 worms[bait].Update();
-            }            
+                Fish.Update();  
+            }          
         }
+
+
     }
 
 }
