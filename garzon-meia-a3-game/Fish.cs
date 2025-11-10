@@ -65,20 +65,36 @@ public class Player
 
     public void GameOver()
     {
-        if (pos.Y + 20 >= Window.Height)
+        //fish is above window
+        if (pos.Y + 20 <= 0)
         {
             Window.ClearBackground(Color.Black);
             Text.Size = 35;
             Text.Color = Color.Red;
             string gameOver = "Your fish is dead. GAME OVER!";
-            Text.Draw(gameOver, 130, 280);
+            Text.Draw(gameOver, 130, 265);
 
             //restart
             Text.Size = 25;
             Text.Color = Color.Red;
             string restart = "Press [SPACE] to restart.";
             Text.Draw(restart, 230, 500);
-        }            
-        
+        }
+
+        //fish is below window
+        if (pos.Y + 20 >= 600)
+        {
+            Window.ClearBackground(Color.Black);
+            Text.Size = 35;
+            Text.Color = Color.Red;
+            string gameOver = "Your fish is dead. GAME OVER!";
+            Text.Draw(gameOver, 130, 265);
+
+            //restart
+            Text.Size = 25;
+            Text.Color = Color.Red;
+            string restart = "Press [SPACE] to restart.";
+            Text.Draw(restart, 230, 500);
+        }
     }
 }
