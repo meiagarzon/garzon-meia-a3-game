@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -54,5 +55,8 @@ public class FishBait
         //draw eye
         Draw.FillColor = Color.Black;
         Draw.Circle(pos.X, pos.Y - 7, 2);
+
+        //draw temporary hitbox
+        //Draw.Rectangle(pos.X - 2, pos.Y - 3, size.X, size.Y);
     }
 }
