@@ -31,7 +31,7 @@ public class Player
         PlayerMovement();
         GameOver();
     }
-    
+
     public void PlayerMovement()
     {
         if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
@@ -66,7 +66,7 @@ public class Player
     public void GameOver()
     {
         //fish is above window
-        if (pos.Y + 20 <= 0)
+        if (pos.Y - 10 <= 0)
         {
             Window.ClearBackground(Color.Black);
             Text.Size = 35;
@@ -82,7 +82,7 @@ public class Player
         }
 
         //fish is below window
-        if (pos.Y + 20 >= 600)
+        if (pos.Y + 10 >= 600)
         {
             Window.ClearBackground(Color.Black);
             Text.Size = 35;

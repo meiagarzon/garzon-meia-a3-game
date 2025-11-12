@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MohawkGame2D;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -7,34 +8,51 @@ using System.Threading.Tasks;
 
 namespace MohawkGame2D;
 
-public class fishBait
+public class FishBait
 {
-    Vector2 pos;
-    Vector2 size;
-    fishBait[] fishBaits = [];
+    Color brown = new Color("#925a3e");
+    public Vector2 pos;
 
-    public fishBait(Vector2 pos, Vector2 size)
+    Vector2 size;
+    FishBait[] fishBaits = [];
+
+    public FishBait(Vector2 pos, Vector2 size)
     {
         this.pos = pos;
         this.size = size;
+        pos.X = pos.X + 800;
     }
 
     public void Update()
     {
+        BaitMovement();
         DrawBait();
+    }
+
+    public void BaitMovement()
+    {        
+        pos.X = -pos.X - 400 * Time.SecondsElapsed;
     }
 
     public void DrawBait()
     {
-        //hitbox
-        Draw.FillColor = Color.Black;
-        Draw.LineSize = 1;
-        Draw.Ellipse(pos, size);        
-        
-        //draw line
+        //draw fishing line
         Draw.LineSize = 1;
         Draw.LineColor = Color.White;
         Draw.Line(pos.X, pos.Y, pos.X, pos.Y - 600);
+
+        //draw body
+        Draw.FillColor = brown;
+        Draw.LineColor = Color.Clear;
+        Draw.Ellipse(pos, size);
+
+        //draw tail
+        Draw.FillColor = brown;
+        Draw.LineColor = Color.Clear;
+        Draw.Triangle(pos.X - 10, pos.Y + 20, pos.X, pos.Y + 5, pos.X + 10, pos.Y + 20);
+
+        //draw eye
+        Draw.FillColor = Color.Black;
+        Draw.Circle(pos.X, pos.Y - 7, 2);
     }
 }
-
