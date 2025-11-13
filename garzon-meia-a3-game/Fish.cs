@@ -1,10 +1,6 @@
 ﻿using MohawkGame2D;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MohawkGame2D;
 
@@ -30,9 +26,17 @@ public class Player
         PlayerGravity();
         PlayerMovement();
         GameOver();
+       //FishHitbox();
+       //FishCollision();
     }
 
-    public void PlayerMovement()
+    /*public void FishCollision()
+    {
+        float fishWidth = pos.X - 30;
+        float fishHeight = pos.X - 11;
+    }*/
+
+    private void PlayerMovement()
     {
         if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
         {
@@ -40,7 +44,7 @@ public class Player
         }
     }
 
-    public void DrawFish()
+    private void DrawFish()
     {
         //draw body
         Draw.FillColor = Color.Yellow;
@@ -55,7 +59,13 @@ public class Player
         Draw.Circle(pos.X + 20, pos.Y, 3);
     }
 
-    public void PlayerGravity()
+    /*public void FishHitbox()
+    {
+        //draw hitbox
+        Draw.Rectangle(pos.X - 30, pos.Y - 11, 60, 20);
+    }*/
+
+    private void PlayerGravity()
     {
         //apply gravity
         velocity += gravity * Time.DeltaTime;
@@ -63,7 +73,7 @@ public class Player
         pos.Y += velocity * Time.DeltaTime;
     }
 
-    public void GameOver()
+    private void GameOver()
     {
         //fish is above window
         if (pos.Y - 10 <= 0)

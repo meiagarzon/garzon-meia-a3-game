@@ -1,21 +1,16 @@
 ﻿using MohawkGame2D;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Drawing;
 using System.Numerics;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MohawkGame2D;
 
 public class FishBait
 {
     Color brown = new Color("#925a3e");
-    public Vector2 pos;
 
+    public Vector2 pos;
     Vector2 size;
-    FishBait[] fishBaits = [];
 
     public FishBait(Vector2 pos, Vector2 size)
     {
@@ -28,14 +23,24 @@ public class FishBait
     {
         BaitMovement();
         DrawBait();
+        //BaitHitbox();
+        //BaitCollision();
     }
 
-    public void BaitMovement()
-    {        
+    /*public void BaitCollision()
+    {
+        float baitX = pos.X - 10;
+        float baitY = pos.Y - 12;
+        float baitWidth = size.X;
+        float baitHeight = size.Y;
+    }*/
+
+    private void BaitMovement()
+    {
         pos.X = -pos.X - 400 * Time.SecondsElapsed;
     }
 
-    public void DrawBait()
+    private void DrawBait()
     {
         //draw fishing line
         Draw.LineSize = 1;
@@ -55,8 +60,11 @@ public class FishBait
         //draw eye
         Draw.FillColor = Color.Black;
         Draw.Circle(pos.X, pos.Y - 7, 2);
-
-        //draw temporary hitbox
-        //Draw.Rectangle(pos.X - 2, pos.Y - 3, size.X, size.Y);
     }
+
+   /* public void BaitHitbox()
+    {
+        //draw hitbox
+        Draw.Rectangle(pos.X - 10, pos.Y - 12, size.X, size.Y);
+    }*/
 }
