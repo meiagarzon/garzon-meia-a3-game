@@ -22,8 +22,6 @@ namespace MohawkGame2D
             new FishBait(new Vector2(820, 540), new Vector2(20, 30)), 
         };
 
-
-
         public void Setup()
         {
             Window.SetSize(800, 600);
@@ -33,9 +31,6 @@ namespace MohawkGame2D
             for (int bait = 0; bait < fishBait.Length; bait++)
             {
                 fishBait[bait].pos.X += bait * 180;
-
-                //position randomizer
-                //fishBait[bait].pos.Y = Random.Integer(200, 500);
             }
         }
 
